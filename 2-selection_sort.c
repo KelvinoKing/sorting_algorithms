@@ -9,7 +9,7 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int temp, hold_temp, swap = 0;
+	int temp, hold_temp;
 
 	if (array == NULL)
 		return;
@@ -19,7 +19,6 @@ void selection_sort(int *array, size_t size)
 	for (i = 0; i < size - 1; i++)
 	{
 		temp = array[i];
-		swap = 0;
 
 		for (j = i + 1; j < size; j++)
 		{
@@ -28,11 +27,9 @@ void selection_sort(int *array, size_t size)
 				hold_temp = temp;
 				temp = array[j];
 				array[j] = hold_temp;
-				swap = 1;
+				print_array(array, size);
 			}
 		}
 		array[i] = temp;
-		if (swap != 0)
-			print_array(array, size);
 	}
 }
