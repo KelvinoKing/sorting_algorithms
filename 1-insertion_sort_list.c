@@ -25,14 +25,14 @@ void insertion_sort_list(listint_t **list)
 			curr->prev = prev_node->prev;
 			curr->next = prev_node;
 			prev_node->prev = curr;
-			
+
 			if (curr->prev != NULL)
 				curr->prev->next = curr;
 			else
 				*list = curr;
 
 			print_list(*list);
-			
+
 			prev_node = curr->prev;
 		}
 
