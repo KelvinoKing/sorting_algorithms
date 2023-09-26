@@ -14,6 +14,7 @@
 	- 0-bubble_sort.c
 	- 2-selection_sort.c
 	- 3-quick_sort.c
+	- 100-shell_sort.c
 
 ### HELPER FILES
 
