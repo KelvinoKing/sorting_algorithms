@@ -24,6 +24,7 @@ void quick_sort(int *array, size_t size)
  * @array: pointer to array of integers
  * @low: first index of array
  * @high: last index of array
+ * @size: size of array
  */
 void new_sort(int *array, ssize_t low, ssize_t high, size_t size)
 {
@@ -42,8 +43,9 @@ void new_sort(int *array, ssize_t low, ssize_t high, size_t size)
  * @array: pointer to array
  * @low: starting index of array in relation to pivot
  * @high: ending point of array in relation to pivot
+ * @size: size of array
  *
- * Return: int
+ * Return: ssize_t
  */
 ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
 {
