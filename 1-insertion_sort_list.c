@@ -2,38 +2,51 @@
 #include <stdio.h>
 
 /**
+ * swap - swaps two nodes
+ * key: current node
+ * prev_node: previous node
+ * list: pointer to list
+ */
+void swap(listint_t *key, listint_t *prev_node, listint_t **list)
+{
+	listint_t *temp;
+
+	temp = prev_node->prev;
+	if (temp)
+		temp->next = key;
+	else
+		*list = key;
+
+	key->prev = temp;
+
+	prev_node->prev = key;
+	prev_node->next = key->next;
+	key->next = prev_node;
+	if (prev_node->next)
+		prev_node->next->prev = prev_node;
+	else
+		prev_node->next = NULL;
+}
+
+/**
  * insertion_sort_list - perform insertion sort on a doubly linked list
  * @list: list to be sorted
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr, *prev_node;
-	
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	listint_t *key = NULL;
+
+	if (list == NULL || *list == NULL)
 		return;
 
-	curr = (*list)->next;
-	while (curr != NULL)
+	key = (*list)->next;
+	while (key)
 	{
-		prev_node = curr->prev;
-		
-		while(prev_node != NULL && prev_node->n > curr->n)
+		while (key->prev && key->prev->n > key->n)
 		{
-			if (prev_node->prev != NULL)
-				prev_node->prev->next = curr;
-			
-			if (curr->next != NULL)
-				curr->next->prev = prev_node;
-			
-			prev_node->next = curr->next;
-			curr->next = prev_node;
-			curr->prev = prev_node->prev;
-			prev_node->prev = curr;
-		
+			swap(key, key->prev, list);
 			print_list(*list);
-
-			prev_node = curr->prev;
 		}
-		curr = curr->next;
+		key = key->next;
 	}
 }
