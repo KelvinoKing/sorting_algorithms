@@ -34,6 +34,7 @@ void swap(listint_t *key, listint_t *prev_node, listint_t **list)
  */
 void insertion_sort_list(listint_t **list)
 {
+<<<<<<< HEAD
 	listint_t *key = NULL;
 
 	if (list == NULL || *list == NULL)
@@ -42,6 +43,7 @@ void insertion_sort_list(listint_t **list)
 	key = (*list)->next;
 	while (key)
 	{
+<<<<<<< HEAD
 		while (key->prev && key->prev->n > key->n)
 		{
 			swap(key, key->prev, list);
