@@ -2,7 +2,7 @@
 
 void new_sort(int *array, ssize_t low, ssize_t high, size_t size);
 ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size);
-void swap(int *a, int *b);
+void swap(int *array, int *a, int *b, size_t size);
 
 /**
  * quick_sort - sorts an array of integers in ascending order using
@@ -58,24 +58,27 @@ ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
 		if (array[j] < pivot)
 		{
 			i++;
-			swap(&array[i], &array[j]);
+			swap(array, &array[i], &array[j], size);
 		}
 	}
 
 	/*swap the greatest element with pivot*/
-	swap(&array[i + 1], &array[high]);
-	print_array(array, size);
+	swap(array, &array[i + 1], &array[high], size);
 	return (i + 1);
 }
 
 /**
  * swap - swaps two elements
+ * @array: pointer to array
  * @a: first element
  * @b: second element
+ * @size: size of array
  */
-void swap(int *a, int *b)
+void swap(int *array, int *a, int *b, size_t size)
 {
 	int t = *a;
 	*a = *b;
 	*b = t;
+	if (*a != *b)
+		print_array(array, size);
 }
